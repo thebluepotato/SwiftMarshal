@@ -10,6 +10,19 @@
 		891DF8561AA1574F00E76634 /* SwiftMarshal.h in Headers */ = {isa = PBXBuildFile; fileRef = 891DF8551AA1574F00E76634 /* SwiftMarshal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		891DF85C1AA1574F00E76634 /* SwiftMarshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891DF8501AA1574F00E76634 /* SwiftMarshal.framework */; };
 		891DF8631AA1574F00E76634 /* SwiftMarshalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8621AA1574F00E76634 /* SwiftMarshalTests.swift */; };
+		891DF8791AA157B300E76634 /* Marshal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF86C1AA157B300E76634 /* Marshal.swift */; };
+		891DF87A1AA157B300E76634 /* Marshaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF86D1AA157B300E76634 /* Marshaller.swift */; };
+		891DF87B1AA157B300E76634 /* Ruby.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF86E1AA157B300E76634 /* Ruby.swift */; };
+		891DF87C1AA157B300E76634 /* RubyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF86F1AA157B300E76634 /* RubyArray.swift */; };
+		891DF87D1AA157B300E76634 /* RubyBignum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8701AA157B300E76634 /* RubyBignum.swift */; };
+		891DF87E1AA157B300E76634 /* RubyBoolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8711AA157B300E76634 /* RubyBoolean.swift */; };
+		891DF87F1AA157B300E76634 /* RubyFixnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8721AA157B300E76634 /* RubyFixnum.swift */; };
+		891DF8801AA157B300E76634 /* RubyHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8731AA157B300E76634 /* RubyHash.swift */; };
+		891DF8811AA157B300E76634 /* RubyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8741AA157B300E76634 /* RubyObject.swift */; };
+		891DF8821AA157B300E76634 /* RubyString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8751AA157B300E76634 /* RubyString.swift */; };
+		891DF8831AA157B300E76634 /* RubySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8761AA157B300E76634 /* RubySymbol.swift */; };
+		891DF8841AA157B300E76634 /* RubyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8771AA157B300E76634 /* RubyType.swift */; };
+		891DF8851AA157B300E76634 /* Unmarshaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891DF8781AA157B300E76634 /* Unmarshaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +42,19 @@
 		891DF85B1AA1574F00E76634 /* SwiftMarshalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMarshalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		891DF8611AA1574F00E76634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		891DF8621AA1574F00E76634 /* SwiftMarshalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMarshalTests.swift; sourceTree = "<group>"; };
+		891DF86C1AA157B300E76634 /* Marshal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marshal.swift; sourceTree = "<group>"; };
+		891DF86D1AA157B300E76634 /* Marshaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Marshaller.swift; sourceTree = "<group>"; };
+		891DF86E1AA157B300E76634 /* Ruby.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruby.swift; sourceTree = "<group>"; };
+		891DF86F1AA157B300E76634 /* RubyArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyArray.swift; sourceTree = "<group>"; };
+		891DF8701AA157B300E76634 /* RubyBignum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyBignum.swift; sourceTree = "<group>"; };
+		891DF8711AA157B300E76634 /* RubyBoolean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyBoolean.swift; sourceTree = "<group>"; };
+		891DF8721AA157B300E76634 /* RubyFixnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyFixnum.swift; sourceTree = "<group>"; };
+		891DF8731AA157B300E76634 /* RubyHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyHash.swift; sourceTree = "<group>"; };
+		891DF8741AA157B300E76634 /* RubyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyObject.swift; sourceTree = "<group>"; };
+		891DF8751AA157B300E76634 /* RubyString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyString.swift; sourceTree = "<group>"; };
+		891DF8761AA157B300E76634 /* RubySymbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubySymbol.swift; sourceTree = "<group>"; };
+		891DF8771AA157B300E76634 /* RubyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyType.swift; sourceTree = "<group>"; };
+		891DF8781AA157B300E76634 /* Unmarshaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unmarshaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +97,9 @@
 		891DF8521AA1574F00E76634 /* SwiftMarshal */ = {
 			isa = PBXGroup;
 			children = (
+				891DF8861AA157C400E76634 /* Marshal */,
+				891DF8871AA157CC00E76634 /* Core */,
+				891DF8881AA157DD00E76634 /* Types */,
 				891DF8551AA1574F00E76634 /* SwiftMarshal.h */,
 				891DF8531AA1574F00E76634 /* Supporting Files */,
 			);
@@ -100,6 +129,40 @@
 				891DF8611AA1574F00E76634 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		891DF8861AA157C400E76634 /* Marshal */ = {
+			isa = PBXGroup;
+			children = (
+				891DF86C1AA157B300E76634 /* Marshal.swift */,
+				891DF86D1AA157B300E76634 /* Marshaller.swift */,
+				891DF8781AA157B300E76634 /* Unmarshaller.swift */,
+			);
+			name = Marshal;
+			sourceTree = "<group>";
+		};
+		891DF8871AA157CC00E76634 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				891DF86E1AA157B300E76634 /* Ruby.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		891DF8881AA157DD00E76634 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				891DF86F1AA157B300E76634 /* RubyArray.swift */,
+				891DF8701AA157B300E76634 /* RubyBignum.swift */,
+				891DF8711AA157B300E76634 /* RubyBoolean.swift */,
+				891DF8721AA157B300E76634 /* RubyFixnum.swift */,
+				891DF8731AA157B300E76634 /* RubyHash.swift */,
+				891DF8741AA157B300E76634 /* RubyObject.swift */,
+				891DF8751AA157B300E76634 /* RubyString.swift */,
+				891DF8761AA157B300E76634 /* RubySymbol.swift */,
+				891DF8771AA157B300E76634 /* RubyType.swift */,
+			);
+			name = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +272,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				891DF87D1AA157B300E76634 /* RubyBignum.swift in Sources */,
+				891DF8841AA157B300E76634 /* RubyType.swift in Sources */,
+				891DF87A1AA157B300E76634 /* Marshaller.swift in Sources */,
+				891DF87E1AA157B300E76634 /* RubyBoolean.swift in Sources */,
+				891DF87B1AA157B300E76634 /* Ruby.swift in Sources */,
+				891DF8831AA157B300E76634 /* RubySymbol.swift in Sources */,
+				891DF8811AA157B300E76634 /* RubyObject.swift in Sources */,
+				891DF8851AA157B300E76634 /* Unmarshaller.swift in Sources */,
+				891DF8791AA157B300E76634 /* Marshal.swift in Sources */,
+				891DF87F1AA157B300E76634 /* RubyFixnum.swift in Sources */,
+				891DF87C1AA157B300E76634 /* RubyArray.swift in Sources */,
+				891DF8821AA157B300E76634 /* RubyString.swift in Sources */,
+				891DF8801AA157B300E76634 /* RubyHash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +395,7 @@
 		891DF8671AA1574F00E76634 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -328,12 +405,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		891DF8681AA1574F00E76634 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
