@@ -9,6 +9,7 @@
 import Foundation
 
 var symcache = [RubySymbol]() //class variables not yet supported
+var objcache = [RubyObject]()
 
 class Unmarshaller {
     private var _input:NSInputStream
@@ -21,6 +22,8 @@ class Unmarshaller {
     init(input: NSInputStream) {
         self._input = input
         _input.open()
+        symcache.removeAll()
+        objcache.removeAll()
     }
 }
 
@@ -76,16 +79,17 @@ extension NSInputStream {
     
     func toASCII(var arr: [Int8]) -> String {
         let ptr = arr.withUnsafeBufferPointer{$0.baseAddress}
-        return NSString(bytes: ptr, length: arr.count, encoding: NSASCIIStringEncoding)!
+        return NSString(bytes: ptr, length: arr.count, encoding: NSASCIIStringEncoding)! as String
     }
     
     func toUTF8(var arr: [Int8]) -> String {
         let ptr = arr.withUnsafeBufferPointer{$0.baseAddress}
-        return NSString(bytes: ptr, length: arr.count, encoding: NSUTF8StringEncoding)!
+        return NSString(bytes: ptr, length: arr.count, encoding: NSUTF8StringEncoding)! as String
     }
     
     func readStringAsBytes() -> [UInt8] {
         let length = readInt()!
+        //println("Length : \(length)")
         var buffer = [UInt8](count: length, repeatedValue: 0)
         var readLength = 0
         while (readLength < length) {
@@ -112,6 +116,7 @@ extension NSInputStream {
     
     func unmarshalRubyType() -> RubyType? {
         let type = readType()
+        //println("Reading type \(type)")
         switch type {
         case "I":
             return RubyString(str: readIVar())
@@ -135,23 +140,58 @@ extension NSInputStream {
             return symcache[readInt()!]
         case "o":
             return unmarshalRubyObject()
+            //objcache.append(obj) //Append happens in unmarshal before setting the vars
+            //println("Object n°\(objcache.count) : \(obj.name)")
+        case "@":
+            // FIXME: Add real support
+            let idx = readInt()!
+            //println("Request for index \(idx) in cache : \(objcache.map{$0.name})")
+            /*let obj = objcache[idx]
+            println("Obj: \(obj.name) at index n°\(idx)")*/
+            return nil
         default:
             return nil
         }
     }
     
     func readIVar() -> String { // we standardize it here
-        if readType() == "\"" {
+        // IVars are usually "rawstring, 1 option which is encoding :E or :encoding (maybe should add)
+        // Sometimes they start with a classname C followed by a raw string
+        let ivarType = readType()
+        if ivarType == "\"" { //normal, easy behaviour
             let bytes = readStringAsBytes().map{Int8($0)}
             if readInt()! == 1 { // length of params, should be one for encoding only
-                if (unmarshalRubyType() as RubySymbol).name == "E" {
+                if (unmarshalRubyType() as! RubySymbol).name == "E" {
                     if let bool = unmarshalRubyType() as? RubyBoolean {
                         return bool.value ? toUTF8(bytes) : toASCII(bytes)
                     }
                 }
             }
+        } else if ivarType == "C" { //only known usecase is C:classname, raw string, encoding and @html_safe which we don't care about
+            let className = unmarshalRubyType() as! RubySymbol
+            //println(className.name)
+            if readType() == "\"" {
+                let bytes = readStringAsBytes().map{Int8($0)}
+                //println(toASCII(bytes))
+                var useUTF8 = false
+                let count = readInt()!
+                //println("Count of params : \(count)")
+                for var i = 0; i < count; i++ {
+                    if let param = unmarshalRubyType() as? RubySymbol, value = unmarshalRubyType() {
+                        if param.name == "E", let bool = value as? RubyBoolean {
+                            useUTF8 = bool.value
+                            //println("Use UTF8 : \(useUTF8)")
+                        } else {
+                            //println("\(param.name) : \(value)")
+                        }
+                    } else {
+                        println("Not a valid symbol in IVar")
+                    }
+                }
+                return useUTF8 ? toUTF8(bytes) : toASCII(bytes)
+            }
         }
-        println("Can't read IVar")
+        println("Can't read IVar for type : \(ivarType)")
         return ""
     }
     
@@ -167,6 +207,7 @@ extension NSInputStream {
             //logger.info("parsed key: {}", key)
             let value = unmarshalRubyType()
             //logger.info("parsed value: {}", value)
+            //println("Key: \(key), value: \(value)")
             if let value = value {
                 hash.updateValue(value, forKey: key)
             } else {
@@ -183,6 +224,7 @@ extension NSInputStream {
         }*/
         if let objectName = unmarshalRubyType() as? RubySymbol {
             var ro = RubyObject(name: objectName)
+            objcache.append(ro)
             // unmarshal its variables!
             unmarshalRubyObjectVariables(&ro)
             return ro
@@ -197,7 +239,7 @@ extension NSInputStream {
         
         for (var i = 0; i < count; i++) {
             // name of variable (should always be a symbol)
-            let name = unmarshalRubyType() as RubySymbol
+            let name = unmarshalRubyType() as! RubySymbol
             
             // value of variable
             let value = unmarshalRubyType()

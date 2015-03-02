@@ -19,9 +19,9 @@ Pod::Spec.new do |s|
   s.version      = "0.0.1"
   s.summary      = "Ruby's Marshal in Swift'"
 
-  s.description  = <<-DESC
-                   Basically this is Ruby's Marshal in Swift. Based entirely on the work of and personal research. Usage is simple, Marshal.load and Marshal.dump
-                   DESC
+#s.description  = <<-DESC
+#                  Basically this is Ruby's Marshal in Swift. Based entirely on the work of and personal research. Usage is simple, Marshal.load and Marshal.dump
+#                  DESC
 
   s.homepage     = "https://github.com/thebluepotato/SwiftMarshal"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-    s.license      = { :type => "MIT", :file => "LICENSE" }
+    s.license      = "MIT"
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -62,7 +62,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
+  #s.ios.deployment_target = "8.0"
   # s.osx.deployment_target = "10.7"
 
 
@@ -83,7 +83,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "SwiftMarshal/*.{h,swift}"
+  s.source_files  = "SwiftMarshal/*.swift"
 #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

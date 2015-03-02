@@ -54,6 +54,12 @@ public class RubySymbol : RubyType {//, Comparable {
     
     public override func inspect(inout sb: NSMutableString, indent: Int) {
         sb.appendString(":");
-        sb.appendString(self.name);
+        sb.appendString(name);
+    }
+    
+    public override var description:String {
+        get {
+            return "\(name)"
+        }
     }
 }

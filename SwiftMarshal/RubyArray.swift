@@ -32,8 +32,10 @@ public class RubyArray: RubyType {
         return self.array[index]
     }
     
-    public func size() -> Int {
-        return self.array.count
+    public var size:Int {
+        get {
+            return self.array.count
+        }
     }
     
     public func getArray() -> [RubyType] {
@@ -53,5 +55,21 @@ public class RubyArray: RubyType {
         }
         for (var i = 0; i < indent; i++) { sb.append(" "); }
         sb.append("]");
+    }
+    
+    public override var description:String {
+        get {
+            var str = "["
+            var j = 1
+            for o in array {
+                //for (var i = 0; i < indent+1; i++) { sb.append(" "); }
+                str += "\(o)"
+                if j < size {str += ","}
+                j++
+            }
+            //for (var i = 0; i < indent; i++) { sb.append(" "); }
+            str += "]"
+            return str
+        }
     }
 }

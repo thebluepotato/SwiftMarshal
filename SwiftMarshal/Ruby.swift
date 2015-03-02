@@ -10,14 +10,10 @@ import Foundation
 
 public class Ruby {
     
-    class public func toString(obj:RubyType) -> String {
-        return toString(obj, indent: 0)
-    }
-    
-    class public func toString(obj:RubyType?, indent:Int) -> String{
+    class public func toString(obj:RubyType?, indent:Int = 0) -> String{
         var sb = NSMutableString()
         appendToString(sb, obj: obj, indent: indent)
-        return sb
+        return sb as String
     }
     
     class public func appendToString(var sb:NSMutableString, obj:RubyType?, indent:Int) {

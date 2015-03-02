@@ -24,4 +24,10 @@ public class RubyBoolean: RubyType {
     public override func inspect(inout sb: NSMutableString, indent: Int) {
         sb.append(value ? "true" : "false")
     }
+    
+    public override var description:String {
+        get {
+            return value ? "true" : "false"
+        }
+    }
 }

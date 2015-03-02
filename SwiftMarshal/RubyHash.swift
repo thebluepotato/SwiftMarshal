@@ -17,6 +17,12 @@ public class RubyHash: RubyType {
         }
     }
     
+    public var count:Int {
+        get {
+            return self._map.count
+        }
+    }
+    
     public func RubyHash() {
         self._map = [RubyType:RubyType]()
     }
@@ -34,17 +40,13 @@ public class RubyHash: RubyType {
         return value
     }
     
-    public func size() -> Int {
-        return self._map.count
-    }
-    
     public override func inspect(inout sb: NSMutableString, indent: Int) {
         sb.append("Hash{")
         var j = 0
         for (key, value) in map {
             if (j == 0) { sb.append("\n") }
             for (var i = 0 ; i < indent+1 ; i++) { sb.append(" ") }
-            sb.append(key.toString())
+            sb.append(key.toString() as String)
             sb.append(" => ")
             sb.append(Ruby.toString(value, indent: indent+1))
             sb.append("\n")
@@ -52,6 +54,22 @@ public class RubyHash: RubyType {
         }
         for (var i = 0; i < indent; i++) { sb.append(" ") }
         sb.append("}")
+    }
+    
+    public override var description:String {
+        get {
+            var str = "["
+            var j = 1
+            for (key, value) in map {
+                //for (var i = 0 ; i < indent+1 ; i++) { sb.append(" ") }
+                str += "\(key) : \(value)"
+                if j < count {str += ","}
+                j++
+            }
+            //for (var i = 0; i < indent; i++) { sb.append(" ") }
+            str += "]"
+            return str
+        }
     }
 }
 

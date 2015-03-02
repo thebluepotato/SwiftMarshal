@@ -27,6 +27,12 @@ public class RubyString: RubyType {
         sb.append("\"")
     }
     
+    override public var description:String {
+        get {
+            return "\"\(str)\""
+        }
+    }
+    
     /*public func hashCode() -> Int {
     var hash = 3
     hash = 53 * hash + Arrays.hashCode(self.bytes)
@@ -35,7 +41,7 @@ public class RubyString: RubyType {
     public override func isEqual(object: AnyObject?) -> Bool {
         if let object:AnyObject = object {
             if object.isKindOfClass(RubyString) {
-                return (object as RubyString) == self
+                return (object as! RubyString) == self
             } else {
                 return false
             }
